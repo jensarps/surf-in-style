@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Jens Arps">
+  <title>HTML Elements in WebGL</title>
+  <style>
+    html, body, #overlay {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+    #overlay {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: whitesmoke;
+      font-size: 20px;
+      font-family: serif;
+    }
+    #wrapper {
+      margin: auto;
+      width: 50%;
+    }
+    #info {
+      padding: 50px 0 50px 0;
+    }
+    #loading {
+      width: 50%;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -50px 0 0 -25%;
+    }
+    #progressMeter,
+    #progress {
+      display: none;
+      width: 50%;
+    }
+    #progress {
+      height: 20px;
+      border-radius: 5px;
+      border: solid 1px whitesmoke;
+    }
+    #progressInner {
+      background: darkred;
+      width: 0;
+      height: 20px;
+      border-radius: 5px;
+    }
+    #go {
+      display: none;
+    }
+    #credits {
+      position: absolute;
+      bottom: 10px;
+      font-family: sans-serif;
+      text-align: center;
+      width: 100%;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: silver;
+    }
+    #credits a {
+      color: deepskyblue;
+    }
+  </style>
+  <script type="text/javascript">
+ 	 var _gaq = _gaq || [];
+ 	 _gaq.push(['_setAccount', 'UA-10931011-1']);
+ 	 _gaq.push(['_trackPageview']);
+ 	 (function() {
+ 	   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ 	   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ 	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ 	 })();
+ 	</script>
+</head>
+<body>
+  <div id="overlay">
+    <div id="wrapper">
+      <div id="info">
+        <strong>Surf in Style: HTML Elements in WebGL</strong><br>
+        <br>
+        Look around using your mouse.<br>
+        Move around with the WSAD keys.<br>
+        Interact with the website as usual.<br>
+        <br>
+        [This experiment requires Chrome and features audio.]
+      </div>
+      <div id="loading">
+        <div id="progressWrapper">
+          Loading...<br>
+          <br>
+          <progress id="progressMeter" value="0"></progress>
+          <div id="progress">
+            <div id="progressInner"></div>
+          </div>
+        </div>
+        <button id="go"> - Go! - </button>
+      </div>
+    </div>
+    <div id="credits">
+      An experiment by <a href="https://plus.google.com/u/0/118110542957297456336/posts" target="_blank">Jens Arps</a>
+      – Music: <a href="https://soundcloud.com/flex-blur/08-flex-blur-understep" target="_blank">Understep</a> by <a href="https://www.facebook.com/flex.blur" target="_blank">Flex Blur</a>
+      – Model by <a href="http://www.turbosquid.com/Search/Artists/jonnyl3D" target="_blank">jonnyl3D</a>
+      – Rendered with <a href="http://threejs.org/" target="_blank">three.js</a>
+    </div>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r58/three.min.js"></script>
+  <script src="lib/three.js/MTLLoader.js"></script>
+  <script src="lib/three.js/OBJMTLLoader.js"></script>
+  <script src="lib/three.js/CSS3DRenderer.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.5/require.min.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
