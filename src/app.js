@@ -37,7 +37,7 @@ require([
   var audio = new Component();
   var audioContext, musicBuffer, musicSource, musicTime;
   audio.load = function(cb){
-    audioContext = new webkitAudioContext();
+    audioContext = new AudioContext();
 
     var request = new XMLHttpRequest();
     request.open('GET', 'audio/flex_blur-understep.mp3', true);
@@ -62,7 +62,7 @@ require([
     request.send();
   };
 
-  if(typeof webkitAudioContext != 'undefined') {
+  if(typeof AudioContext != 'undefined') {
     world.getEntityById('environment').addComponent('audio', audio);
   }
 
@@ -207,13 +207,13 @@ require([
       }
       if (document.webkitHidden) {
         musicTime = audioContext.currentTime;
-        musicSource.noteOff(0);
+        musicSource.stop();
       } else {
         musicSource = audioContext.createBufferSource();
         musicSource.buffer = musicBuffer;
         musicSource.loop = true;
         musicSource.connect(audioContext.destination);
-        musicSource.noteGrainOn(0, musicTime, musicBuffer.duration - musicTime);
+        musicSource.start(0, musicTime, musicBuffer.duration - musicTime);
       }
     }, false);
 
@@ -225,7 +225,7 @@ require([
     button.style.display = 'inline-block';
     button.addEventListener('click', function(){
       started = true;
-      musicSource.noteOn(0);
+      musicSource.start(0);
       world.run();
       document.body.removeChild(document.getElementById('overlay'));
     }, false);
